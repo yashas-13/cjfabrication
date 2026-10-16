@@ -135,7 +135,7 @@ public final class MainActivity extends Activity {
                     intent.setType("*/*");
                     startActivityForResult(intent, FILE_CHOOSER_REQUEST);
                     return true;
-                } catch (ActivityNotFoundException | RuntimeException exception) {
+                } catch (RuntimeException exception) {
                     pendingFileCallback = null;
                     callback.onReceiveValue(null);
                     return false;
@@ -172,7 +172,7 @@ public final class MainActivity extends Activity {
         try {
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             startActivity(intent);
-        } catch (ActivityNotFoundException | RuntimeException ignored) {
+        } catch (RuntimeException ignored) {
             // No compatible handler installed; keep the app open.
         }
         return true;
